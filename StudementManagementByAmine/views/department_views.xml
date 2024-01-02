@@ -1,0 +1,55 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="depatment_list_view">
+      <field name="name">Department list</field>
+      <field name="model">university.depatment</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="code"/>
+                    <field name="associated_student_full_name"/>
+
+        </tree>
+      </field>
+    </record>
+
+    <!-- explicit from view definition -->
+
+    <record model="ir.ui.view" id="depatment_form_view">
+      <field name="name">Student From</field>
+      <field name="model">university.depatment</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="name"/>
+            <field name="code"/>
+                            <field name="student_associated"/>
+                <field name="associated_student_full_name" readonly="1"/>
+
+
+          </group>
+        </form>
+      </field>
+    </record>
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="depatment_action_window">
+      <field name="name">department window</field>
+      <field name="res_model">university.depatment</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+    <menuitem name="Departments" id="university_depatment_cat" parent="student_menu" />
+
+
+    <menuitem name="List of depatments" id="university_depatment_list" parent="university_depatment_cat"
+              action="depatment_action_window" />
+
+
+
+  </data>
+</odoo>

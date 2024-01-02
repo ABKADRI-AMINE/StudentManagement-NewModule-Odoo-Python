@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="student_tree" model="ir.ui.view">
+        <field name="name">student.tree</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <tree string="Students">
+               <field name="fileNumber"/>
+                <field name="lastName"/>
+                <field name="firstName"/>
+                <field name="dateOfBirth"/>
+                <field name="email"/>
+                <field name="cin"/>
+                <field name="cne"/>
+                <field name="phoneNumber"/>
+                <field name="paid"/>
+            </tree>
+        </field>
+    </record>
+<record id="student_form" model="ir.ui.view">
+    <field name="name">student.form</field>
+    <field name="model">student.student</field>
+    <field name="arch" type="xml">
+        <form string="Students">
+            <sheet>
+
+
+                    <group>
+                        <field name="lastName"/>
+                        <field name="dateOfBirth"/>
+                        <field name="cin"/>
+                        <field name="phoneNumber"/>
+                    </group>
+                    <group>
+                        <field name="firstName"/>
+                        <field name="email"/>
+                        <field name="cne"/>
+                        <field name="paid"/>
+                    </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+    <record id="student_action" model="ir.actions.act_window">
+        <field name="name">student</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">student.student</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Click to add a new student
+            </p>
+        </field>
+    </record>
+<record id="sequence_student_student" model="ir.sequence">
+    <field name="name">Student Sequence</field>
+    <field name="code">student.student.sequence</field>
+    <field name="prefix">STU</field>
+    <field name="padding">4</field>
+</record>
+
+    <menuitem id="student_menu" name="My Student Management" sequence="0"/>
+    <menuitem name="Students" id="university_student_cat" parent="student_menu"/>
+
+    <menuitem id="student_management_menu" name="Student Management" parent="student_menu" action="student_action"/>
+
+</odoo>
